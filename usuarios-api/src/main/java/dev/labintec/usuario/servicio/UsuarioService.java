@@ -61,7 +61,7 @@ public class UsuarioService {
      * @return el Usuario persistido con su ID generado.
      * @throws RecursoDuplicadoException si ya existe un username idéntico.
      */
-    public Usuario crear(Usuario usuario) {
+    public Usuario crearUsuario(Usuario usuario) {
         Optional<Usuario> opcional = repositorio.findByUsername(usuario.getUsername());
         if (opcional.isPresent())
             throw new RecursoDuplicadoException("Usuario con nombre = " + usuario.getUsername() + ", ya existe.");
@@ -77,7 +77,6 @@ public class UsuarioService {
      * @return el Usuario con la contraseña actualizada
      * @throws RecursoNoEncontradoException si no existe un usuario con ese username
      */
-
     public Usuario actualizarPassword(String username, Usuario usuarioActualizado) {
         // Busca el usuario existente por su username
         Optional<Usuario> opcional = repositorio.findByUsername(username);
@@ -103,7 +102,7 @@ public class UsuarioService {
      * @param username nombre único del usuario a borrar.
      * @throws RecursoNoEncontradoException si no se encuentra el registro.
      */
-    public void eliminar(String username) {
+    public void eliminarUsuario(String username) {
         Optional<Usuario> opcional = repositorio.findByUsername(username);
         if (!opcional.isPresent())
             throw new RecursoNoEncontradoException("Usuario con nombre = " + username + ", no existe.");
