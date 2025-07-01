@@ -18,12 +18,12 @@ public class UsuarioRequestDTO {
     /**
      * Nombre único que el usuario proporciona para su cuenta.
      */
-    @NotBlank(message = "En nombre de usuario es obligatorio")
+    @NotBlank(message = "El nombre de usuario es obligatorio")
     private String username;
 
     /**
      * Contraseña en texto plano para registro o cambio de credenciales.
      */
-    @NotBlank(message = "En password es obligatorio")
+    @NotBlank(message = "El password es obligatorio")
     private String password;
 }

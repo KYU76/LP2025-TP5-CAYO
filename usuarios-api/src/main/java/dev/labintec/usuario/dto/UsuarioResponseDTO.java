@@ -23,6 +23,6 @@ public class UsuarioResponseDTO {
     /**
      * Nombre único que identifica al usuario.
      */
-    @NotBlank(message = "En nombre de usuario es obligatorio")
+    @NotBlank(message = "El nombre de usuario es obligatorio")
     private String username;
 }

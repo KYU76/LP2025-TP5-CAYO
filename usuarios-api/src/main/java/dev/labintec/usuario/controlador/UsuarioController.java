@@ -22,9 +22,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 /**
  * Controlador REST para la gestión de usuarios.
- * Expone endpoints que aceptan {@link UsuarioRequestDTO} y devuelven
+ * Expone endpoints que aceptan UsuarioRequestDTO y devuelven
  * UsuarioResponseDTO, garantizando validación y mapeo claro entre 
- * la capa de negocio y la API.
+ * la API y la lógica de negocio.
  *
  * Endpoints:
  *  - GET /api/v1/usuarios                      → lista todos los usuarios
@@ -89,7 +89,7 @@ public class UsuarioController {
     @ResponseStatus(HttpStatus.CREATED)
     public UsuarioResponseDTO crearUsuario(@Valid @RequestBody UsuarioRequestDTO dto) {
         Usuario entidad = UsuarioMapper.toUsuario(dto);   // Convierte RequestDTO → Entidad
-        Usuario guardado = servicio.crear(entidad);       // Aplica validaciones y guarda
+        Usuario guardado = servicio.crearUsuario(entidad); // Aplica validaciones y guarda
         return UsuarioMapper.toDTO(guardado);             // Convierte Entidad → ResponseDTO
     }
 
@@ -113,6 +113,6 @@ public class UsuarioController {
     @DeleteMapping("/{username}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void eliminarUsuario(@PathVariable String username) {
-        servicio.eliminar(username);    // Lanza 404 si no existe
+        servicio.eliminarUsuario(username);
     }
 }
